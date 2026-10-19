@@ -1,52 +1,74 @@
 import streamlit as st
 
-st.set_page_config(page_title="Interior Studio | Lahore", layout="wide", page_icon="🏠")
+# --- PAGE CONFIG ---
+st.set_page_config(page_title="I CONCEPT - Design Build Decor", layout="wide", page_icon="🏠")
 
-# --- CUSTOM CSS ---
+# --- NEW THEME CSS - BLACK & GOLD ---
 st.markdown("""
 <style>
-.hero { background-color: #1a1a1a; padding: 80px 40px; color: white; text-align: center; border-radius: 15px; }
-.service-card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
-.btn { background: #C19A5B; color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; }
+    .stApp { background-color: #0A0A0A; }
+    h1, h2, h3, p, span, li { color: #F5E6C8 !important; }
+    .header-box { background:#0A0A0A; border-bottom:2px solid #D4AF37; padding:15px 20px; display:flex; align-items:center; }
+    .hero { background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6'); background-size:cover; padding:130px 30px; text-align:center; border-radius:20px; border:1px solid #D4AF37; }
+    .gold-btn { background:#D4AF37; color:#000 !important; padding:15px 35px; border-radius:8px; text-decoration:none; font-weight:bold; font-size:16px; }
+    .outline-btn { border:1px solid #D4AF37; color:#D4AF37 !important; padding:15px 35px; border-radius:8px; text-decoration:none; margin-left:15px; }
+    .service-card { background:#141414; border:1px solid #222; border-left:3px solid #D4AF37; padding:20px; border-radius:10px; }
 </style>
 """, unsafe_allow_html=True)
 
-# --- HEADER ---
-st.markdown('<div class="hero"><h1>Your Space, Our Design</h1><p>Premium Interior Solutions in Lahore - Kitchen | Bedroom | Office</p><br><a class="btn" href="https://wa.me/923000000000">Get Free Quotation on WhatsApp</a></div>', unsafe_allow_html=True)
+# --- NEW HEADER WITH LOGO + I CONCEPT ---
+col1, col2 = st.columns([1, 4])
+with col1:
+    try:
+        st.image("logo.png", width=140)
+    except:
+        st.markdown("<h2 style='color:#D4AF37;'>I CONCEPT</h2>", unsafe_allow_html=True)
 
-st.write("---")
+with col2:
+    st.markdown("""
+    <div style="padding-top:15px;">
+        <h2 style="margin:0; color:#D4AF37 !important; letter-spacing:3px; font-family: serif;">I CONCEPT</h2>
+        <p style="margin:0; color:#D4AF37 !important; letter-spacing:5px; font-size:13px;">DESIGN • BUILD • DECOR</p>
+        <p style="margin:8px 0 0 0; color:#AAAAAA !important; font-size:14px;">📞 0339-9292000 • 0312-4111011 &nbsp; | &nbsp; 📍 96 A Block Al-Hafiz Town, Marghzar Lahore</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# --- HERO SECTION ---
+st.markdown("""
+<div class="hero">
+<h1 style="font-size:52px; color:#F5E6C8 !important; margin-bottom:10px;">Design • Build • Decor</h1>
+<p style="font-size:20px; color:#D4AF37 !important; letter-spacing:2px;">TRANSFORMING SPACES IN LAHORE</p>
+<p style="color:#CCCCCC !important; max-width:700px; margin:20px auto;">Luxury Interiors | Custom Builds | Elegant Design Solutions for Modern Homes - Kitchens, Bedrooms, Living & Offices</p>
+<br><br>
+<a class="gold-btn" href="https://wa.me/923399292000?text=Salam I CONCEPT, mujhe interior ka quote chahiye">BOOK CONSULTATION</a>
+<a class="outline-btn" href="https://wa.me/923399292000">VIEW PROJECTS</a>
+</div>
+""", unsafe_allow_html=True)
+
+st.write("")
+st.write("")
 
 # --- SERVICES ---
-st.header("Our Services")
-col1, col2, col3 = st.columns(3)
-with col1:
-    st.image("https://images.unsplash.com/photo-1556911220-bff31c812dba", caption="Modular Kitchen")
-    st.write("**Modular Kitchen** - Modern & Functional")
-with col2:
-    st.image("https://images.unsplash.com/photo-1616594039964-ae9021a400a0", caption="Bedroom Interior")
-    st.write("**Bedroom Design** - Luxury & Comfort")
-with col3:
-    st.image("https://images.unsplash.com/photo-1497366216548-37526070297c", caption="Office Interior")
-    st.write("**Office / Commercial** - Professional Look")
+st.markdown("<h2 style='color:#D4AF37 !important;'>Our Expertise</h2>", unsafe_allow_html=True)
+c1, c2, c3 = st.columns(3)
+with c1:
+    st.markdown("<div class='service-card'><h4>🏠 Full House Interior</h4><p style='color:#aaa !important;'>Complete home transformation from concept to completion.</p></div>", unsafe_allow_html=True)
+    st.image("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6", use_container_width=True)
+with c2:
+    st.markdown("<div class='service-card'><h4>🍳 Modular Kitchen</h4><p style='color:#aaa !important;'>Modern, functional kitchens with premium finishes.</p></div>", unsafe_allow_html=True)
+    st.image("https://images.unsplash.com/photo-1556911220-bff31c812dba", use_container_width=True)
+with c3:
+    st.markdown("<div class='service-card'><h4>🛏️ Bedrooms & Wardrobes</h4><p style='color:#aaa !important;'>Luxury wardrobes and cozy bedroom designs.</p></div>", unsafe_allow_html=True)
+    st.image("https://images.unsplash.com/photo-1616594039964-ae9021a400a0", use_container_width=True)
 
-st.write("---")
+st.divider()
 
-# --- PORTFOLIO ---
-st.header("Our Recent Work")
-p1, p2, p3, p4 = st.columns(4)
-p1.image("https://images.unsplash.com/photo-1586023492125-27b2c045efd7")
-p2.image("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6")
-p3.image("https://images.unsplash.com/photo-1615874959474-d609969a20ed")
-p4.image("https://images.unsplash.com/photo-1616046229478-9901c5536a45")
-
-st.write("---")
-
-# --- CONTACT ---
-st.header("Contact Us for Free Visit")
-st.write("📍 Location: Lahore | 📞 Call: 0300-0000000")
-name = st.text_input("Your Name")
-phone = st.text_input("Phone Number")
-msg = st.text_area("Tell us about your project (e.g., 5 Marla House Full Interior)")
-if st.button("Send Inquiry"):
-    st.success(f"Thanks {name}! We will contact you soon on {phone} for quotation.")
-    st.balloons()
+# --- FOOTER ---
+st.markdown("""
+<div style="text-align:center; padding:30px; border-top:1px solid #222;">
+<p style="color:#D4AF37 !important; font-size:18px; letter-spacing:3px;">I CONCEPT - DESIGN • BUILD • DECOR</p>
+<p style="color:#888 !important;">Trusted by 200+ Clients in Lahore | Est. 2018<br>96 A Block Al-Hafiz Town, Marghzar Lahore<br>0339-9292000 • 0312-4111011</p>
+<br>
+<a class="gold-btn" href="https://wa.me/923399292000">Contact on WhatsApp</a>
+</div>
+""", unsafe_allow_html=True)
