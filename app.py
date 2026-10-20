@@ -61,3 +61,36 @@ st.markdown("""
 <br><a class="gold-btn" href="https://wa.me/923124111011">WhatsApp: 0312-4111011</a>
 </div>
 """, unsafe_allow_html=True)
+import os
+import streamlit as st
+from PIL import Image
+
+# --- AUTO IMAGE GALLERY - Aapko kuch nahi karna ---
+def show_auto_gallery():
+    folder = "assets"  # Aap isi folder me pics daloge
+    
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+        st.info(f"'{folder}' folder bana diya gaya hai. Ab is me pics upload karo.")
+        return
+
+    images = [f for f in os.listdir(folder) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.webp', '.zip'))]
+    
+    # Zip ko ignore karo, sirf pics dikhao
+    images = [f for f in images if not f.endswith('.zip')]
+
+    if images:
+        st.subheader("Uploaded Pics Gallery")
+        cols = st.columns(3) # 3 pics ek line me
+        for i, img_file in enumerate(images):
+            img_path = os.path.join(folder, img_file)
+            try:
+                with cols[i % 3]:
+                    st.image(img_path, caption=img_file, use_column_width=True)
+            except:
+                pass
+    else:
+        st.warning("assets folder khali hai. GitHub pe ja ke pics upload karo.")
+
+# Isko jahan gallery dikhani hai wahan call karo
+show_auto_gallery()
